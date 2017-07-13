@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Transformação DevOps</title>
+
+		<meta name="description" content="Transformação DevOps">
+		<meta name="author" content="Rafael Gomes">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css" id="theme">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h3>Transformação DevOps</h3>
+					<p>
+						<small>Criado por <a href="http://gomex.github.io">Rafael Gomes</a> / <a href="http://twitter.com/gomex">@gomex</a></small>
+					</p>
+				</section>
+
+				<section>
+					<h2>Quem sou eu</h2>
+					<h3>Rafael Gomes</h3>
+					<img width="320" height="338" data-src="./img/avatar.jpg" align="right" alt="Rafael Gomes">
+					<ul>
+						<li>Soteropolitano</li>
+						<li>Apaixonado por compartilhar</li>
+						<li>Engenheiro DevOps</li>
+						<li>@gomex</li>
+						<li>Docker Captain</li>
+						<li>gomex.github.io</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>O que estou fazendo</h2>
+					<h3>Livro</h3>
+					<img width="230" height="338" data-src="./img/hero.png" align="right" alt="Docker para desenvolvedores">
+					<ul>
+						<li>Pague quanto quiser, inclusive nada</li>
+						<li>Não precisa saber nada de Docker</li>
+						<li>Licenciado em creative commons</li>
+						<li>Atualização frequente</li>
+					</ul>
+					<p>Para baixar: <a href="tinyurl.com/docker-devel">tinyurl.com/docker-devel</a></p>
+				</section>
+
+				<section>
+					<h3>Acompanhe os slides ou leia depois</h3>
+					<h4><a href="https://tinyurl.com/docker-super">https://tinyurl.com/docker-super</a></h4>
+					<h4>Licença:</h4>
+					<img data-src="./img/CC-BY.png">
+				</section>
+
+				<section>
+					<h2>O que é DevOps?</h2>
+					<img data-src="./img/wallofconfusion_release.png">
+				</section>
+
+				<section>
+					<h2>DevOps não é ferramenta</h2>
+					<img data-src="./img/devops-tools.png">
+				</section>
+
+				<section>
+					<h2>DevOps não é cargo</h2>
+					<img data-src="./img/devops-cargo.png">
+				</section>
+
+				<section>
+					<h2>DevOps é Cultura!</h2>
+					<img data-src="./img/devops-culture.jpg">
+				</section>
+
+				<section>
+					<h2>DevOps na prática</h2>
+					<img data-src="./img/cams.jpg" height="500">
+				</section>
+
+				<section>
+					<h2>Entrega contínua</h2>
+					<img data-src="./img/entrega-continua.png" height="500">
+				</section>
+
+				<section>
+					<h2>Entrega contínua</h2>
+					<img data-src="./img/CD.png" height="500">
+				</section>
+
+				<section>
+					<h2>Entrega contínua</h2>
+					<img data-src="./img/jenkins.png" height="500">
+				</section>
+
+				<section>
+					<h2>Melhores práticas</h2>
+					<img data-src="./img/12-factor-app-logo.png">
+				</section>
+
+				<section>
+					<h2>1 - Base de Código</h2>
+					<img data-src="./img/codebase-deploys.png" >
+					<ul>
+						<li>Único repositório</li>
+						<li>Compartilhar mesma base de código</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>2 - Dependências</h2>
+					<h4>Declare e isole explicitamente as dependências (Ex. Gemfile)</h4>
+					<ul>
+						<li>Não precisa de dependência pré-instalada</li>
+						<li>Responsável por toda sua dependência</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>3 - Configurações</h2>
+					<h4>Armazene as configurações no ambiente ou em arquivos não versionados</h4>
+					<ul>
+						<li>Estrita separação da configuração a partir do código</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>4 - Serviços de Apoio</h2>
+					<img data-src="./img/attached-resources.png" height="400">
+					<ul>
+						<li>Sem distinção entre serviços locais e de terceiros</li>
+					</ul>
+				</section>
+
+				<section>
+						<h2>5 - Construa, lance, execute</h2>
+						<img data-src="./img/release.png" height="150">
+						<ul>
+							<li>Construção: Converter um repositório de código em um pacote executável</li>
+							<li>Lançar: Pegar a construção produzida pelo estágio de <b>construção</b> e a combinar com a atual configuração do deploy.</li>
+							<li>Executar: roda o app, de um determinado <b>lançamento</b>, no ambiente de execução </li>
+						</ul>
+
+				</section>
+
+				<section>
+					<h2>6 - Processos</h2>
+					<h4>Execute a aplicação como um ou mais processos que não armazenam estado (Ex. Usar serviços de apoio)</h4>
+					<ul>
+						<li>São stateless(não armazenam estado) e share-nothing</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>7 - Vínculo de Portas</h2>
+					<h4>Exporte serviços via vínculo de portas</h4>
+					<ul>
+						<li>É completamente auto-contido</li>
+						<li>Exporta o HTTP como um serviço através da vínculação a uma porta</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>8 - Concorrência</h2>
+					<h4>Escale através do processo modelo</h4>
+					<img data-src="./img/process-types.png" height="300">
+					<ul>
+						<li>Atribuindo a cada tipo de trabalho a um tipo de processo.</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>9 - Descartabilidade</h2>
+					<h4>Maximize robustez com inicialização rápida e desligamento gracioso</h4>
+					<ul>
+						<li>Minimizar o tempo de inicialização</li>
+						<li>Desligam-se graciosamente quando recebem um sinal SIGTERM</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>10 - Paridade entre desenv/produção</h2>
+					<h4>Mantenha o desenvolvimento, homologação e produção o mais similares possível</h4>
+				</section>
+
+				<section>
+					<h2>11 - Logs</h2>
+					<h4>Trate logs como fluxos de eventos</h4>
+					<ul>
+						<li>Não se preocupe com o roteamento ou armazenagem do seu fluxo de saída</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>12 - Processos administrativos</h2>
+					<h4>Rode tarefas de administração/gestão em processos pontuais</h4>
+					<ul>
+						<li>Processos administrativos pontuais devem ser executados em um ambiente idêntico</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Caso mais comum de dor</h2>
+					<h3>TTD baixo</h3>
+					<img data-src="./img/poor-performance-low-numbers.jpg" height="400">
+
+				</section>
+
+				<section>
+					<h2>...mas o que é TTD</h2>
+				</section>
+
+				<section>
+					<h3>Time To Delivery (Tempo de Entrega)</h3>
+					<img data-src="./img/entrega-continua.png">
+				</section>
+
+				<section>
+					<section>
+						<h3>Por que o Tempo de entrega é baixo?</h3>
+						<img data-src="./img/pipeline1.png" height="500">
+					</section>
+					<section>
+						<h3>Por que o Tempo de entrega é baixo?</h3>
+						<img data-src="./img/problemas1.png" height="500">
+					</section>
+					<section>
+						<h3>Por que o Tempo de entrega é baixo?</h3>
+						<img data-src="./img/problemas2.png" height="500">
+					</section>
+					<section>
+						<h3>Por que o Tempo de entrega é baixo?</h3>
+						<img data-src="./img/problemas3.png" height="500">
+					</section>
+					<section>
+						<h3>Por que o Tempo de entrega é baixo?</h3>
+						<img data-src="./img/problemas4.png" height="500">
+					</section>
+					<section>
+						<h3>Por que o Tempo de entrega é baixo?</h3>
+						<img data-src="./img/problemas5.png" height="500">
+					</section>
+					<section>
+						<h3>Por que o Tempo de entrega é baixo?</h3>
+						<img data-src="./img/problemas6.png" height="500">
+					</section>
+				</section>
+
+				<section>
+					<h3>O que pode ser feito para otimizar o TTD?</h3>
+					<img data-src="./img/pipeline1.png" height="500">
+				</section>
+
+				<section>
+					<section>
+						<h2>Falando sobre Ansible</h2>
+					</section>
+					<section>
+						<h3>Trabalho repetitivo</h3>
+						<img data-src="./img/saude-doencas.jpg" height="500">
+					</section>
+					<section>
+						<h3>O que é gerência de configuração</h3>
+						<img data-src="./img/gerencia-de-configurao.jpg" height="500">
+					</section>
+
+					<section>
+						<h3>Exemplos</h3>
+						<ul>
+							<li>Criação de máquinas virtuais</li>
+							<li>Criação de cluster</li>
+							<li>Alocação de regras de firewall</li>
+							<li>Adição no monitoramento</li>
+							<li>Manutenção de serviços</li>
+							<li>Documentação desatualizada</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>Como o ansible funciona?</h3>
+						<img data-src="./img/ansible1.png" height="500">
+					</section>
+
+					<section>
+						<h3>Facilidades</h3>
+						<ul>
+							<li>Sintaxe simples (YAML)</li>
+							<li>Idempotente</li>
+							<li>Ordenação simples</li>
+							<li>Sem necessidade de agente</li>
+							<li>Documentação viva</li>
+							<li>Não é somente gerencia de configuração</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>Exemplo</h2>
+						<h3>Interação com serviços</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+							tasks:
+						    - name: Create an empty bucket
+						      s3:
+						        bucket: cloudformation-workshop-gomex
+						        mode: create
+						        permission: public-read
+
+						    - name: Upload the cf to s3 bucket
+						      s3:
+						        bucket: cloudformation-workshop-gomex
+						        object: Docker.tmpl
+						        src: Docker.tmpl
+						        mode: put
+						</code></pre>
+					</section>
+					<section>
+						<h2>Exemplo</h2>
+						<h3>Criando infraestrutura na nuvem</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+							- name: launch ansible cloudformation example
+					      cloudformation:
+					        stack_name: "ansible-workshop"
+					        state: "present"
+					        region: "us-east-2"
+					        disable_rollback: true
+					        template_url: https://s3.amazonaws.com/cloudformation-crossover-gomex/Docker.tmpl
+					        template_parameters:
+					          EnableCloudStorEfs: "yes"
+					          KeyName: "crossover"
+					          ManagerInstanceType: "t2.medium"
+					          InstanceType: "t2.medium"
+					        tags:
+					          Stack: "ansible-cloudformation"
+						</code></pre>
+						</section>
+						<section>
+							<h2>Exemplo</h2>
+							<h3>Manipulando usuário</h3>
+							<pre><code class="hljs" data-trim contenteditable>
+								- user:
+							    name: james
+							    shell: /bin/bash
+							    groups: admins,developers
+							    append: yes
+
+								- user:
+								  name: jsmith
+								  generate_ssh_key: yes
+								  ssh_key_bits: 2048
+								  ssh_key_file: .ssh/id_rsa
+
+							</code></pre>
+					</section>
+					<section>
+						<h2>Exemplo</h2>
+						<h3>Manipulando grupo</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+							- group:
+						    name: somegroup
+						    state: present
+
+						</code></pre>
+				</section>
+					<section>
+						<h2>Exemplo</h2>
+						<h3>Manipulando pacotes</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+							- name: install the latest version of ntpdate
+							  package:
+							    name: ntpdate
+							    state: latest
+
+							- name: remove the ntpdate package
+							  package:
+							    name: ntpdate
+							    state: absent
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Exemplo</h2>
+						<h3>Manipulando NewRelic</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+- newrelic_deployment:
+    token: AAAAAA
+    app_name: myapp
+    user: ansible deployment
+    revision: '1.0'
+
+						</code></pre>
+					</section>
+					<section>
+						<h2>Exemplo</h2>
+						<h3>Manipulando Monitoramento</h3>
+						<pre><code class="hljs" data-trim contenteditable>
+- name: Create a new host or update an existing host's info
+  local_action:
+    module: zabbix_host
+    server_url: http://monitor.example.com
+    login_user: username
+    login_password: password
+    host_name: ExampleHost
+    visible_name: ExampleName
+    host_groups:
+      - Example group1
+      - Example group2
+    link_templates:
+      - Example template1
+    status: enabled
+    state: present
+
+						</code></pre>
+					</section>
+					<section>
+						<h3>Video</h3>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Falando sobre Docker</h2>
+					</section>
+						<section>
+							<h3>Mudança no tamanho das aplicações</h3>
+							<img data-src="./img/docker1.png" height="500">
+						</section>
+						<section>
+							<h3>Como fazer deploy</h3>
+							<img data-src="./img/docker2.png" height="500">
+						</section>
+
+						<section>
+							<h3>Solução Docker</h3>
+							<ul>
+								<li>Pacote com binários e dependências</li>
+								<li>Softwares isolados</li>
+								<li>Contâiner como artefato padrão</li>
+								<li>Portabilidade</li>
+								<li>Padronização do processo de desenvolvimento</li>
+								<li>Faça uma vez, coloque em qualquer lugar</li>
+							</ul>
+						</section>
+						<section>
+							<h3>Docker</h3>
+							<img data-src="./img/docker3.png" height="500">
+						</section>
+						<section>
+							<h3>Contâiner vs Máquina virtual</h3>
+							<img data-src="./img/docker4.png" height="500">
+						</section>
+						<section>
+							<h3>Camadas</h3>
+							<img data-src="./img/docker5.png" height="500">
+						</section>
+						<section>
+							<h3>Imagens e Containeres</h3>
+							<img data-src="./img/docker6.png" height="500">
+						</section>
+						<section>
+							<h3>Arquitetura</h3>
+							<img data-src="./img/docker7.png" height="500">
+						</section>
+						<section>
+							<h3>Comandos básicos</h3>
+							<img data-src="./img/docker8.png" height="500">
+						</section>
+						<section>
+							<h3>Mapeamento de portas</h3>
+							<img data-src="./img/docker9.png" height="500">
+						</section>
+						<section>
+							<h3>Mapeamento de volumes</h3>
+							<img data-src="./img/docker10.png" height="500">
+						</section>
+						<section>
+							<h3>Dockerfile</h3>
+							<h4>Arquivo de definição para criação de imagens</h4>
+						</section>
+						<section>
+							<h3>Recursos Dockerfile</h3>
+							<img data-src="./img/docker11.png" height="500">
+						</section>
+						<section>
+							<h2>Exemplo</h2>
+							<h3>Dockerfile Flask Python</h3>
+							<pre><code class="hljs" data-trim contenteditable>
+FROM alpine:3.1
+
+# Update
+RUN apk add --update python py-pip
+
+# Install app dependencies
+RUN pip install Flask
+
+# Bundle app source
+COPY simpleapp.py /src/simpleapp.py
+
+EXPOSE  8000
+CMD ["python", "/src/simpleapp.py", "-p 8000"]
+							</code></pre>
+						</section>
+						<section>
+							<h3>Multi Stage Build</h3>
+							<img data-src="./img/multi-stage-build.jpg" height="500">
+						</section>
+						<section>
+							<h2>Exemplo</h2>
+							<h3>Multi stage build</h3>
+							<pre><code class="hljs" data-trim contenteditable>
+FROM golang:1.7.3
+WORKDIR /go/src/github.com/alexellis/href-counter/
+RUN go get -d -v golang.org/x/net/html
+COPY app.go .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+WORKDIR /root/
+COPY --from=0 /go/src/github.com/alexellis/href-counter/app .
+CMD ["./app"]
+							</code></pre>
+						</section>
+						<section>
+							<h3>Video</h3>
+						</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h2>Falando sobre GitlabCI</h2>
+					</section>
+						<section>
+							<h3>O que é Git</h3>
+							<img data-src="./img/git1.png" height="500">
+						</section>
+						<section>
+							<h3>O mais usado</h3>
+							<img data-src="./img/github.jpg" height="500">
+						</section>
+
+						<section>
+							<h3>...mas tem concorrente</h3>
+							<img data-src="./img/gitlab2.png" >
+						</section>
+
+						<section>
+							<h3>Interface simples</h3>
+							<img data-src="./img/gitlab3.png" >
+						</section>
+
+						<section>
+							<h3>Vantagens</h3>
+							<ul>
+								<li>Instalação local</li>
+								<li>Repositórios públicos e privados</li>
+								<li>Suporte a autenticação LDAP</li>
+								<li>Funciona com Docker</li>
+								<li>Tem ferramenta de wiki e bug track</li>
+								<li>Auto serviço</li>
+								<li>Tem CI integrado</li>
+							</ul>
+						</section>
+
+						<section>
+							<h2>Exemplo</h2>
+
+							<pre><code class="hljs" data-trim contenteditable>
+image: ruby:2.1
+services:
+  - postgres
+
+before_script:
+  - bundle install
+
+after_script:
+  - rm secrets
+
+job1:
+  stage: build
+  script:
+    - execute-script-for-job1
+							</code></pre>
+						</section>
+				</section>
+
+				</section>
+
+				<section>
+					<h2>Falando sobre Teste de infraestrutura</h2>
+				</section>
+
+				<section>
+					<h2>Falando sobre Monitoramento</h2>
+				</section>
+
+				<section>
+					<h2>Duvidas?</h2>
+					<h3>Rafael Gomes</h3>
+					<img width="320" height="338" data-src="./img/avatar.jpg" align="right" alt="Rafael Gomes">
+					<ul>
+						<li>Engenheiro DevOps</li>
+						<li>gomex@riseup.net</li>
+						<li>@gomex</li>
+						<li>Docker Captain</li>
+						<li>gomex.github.io</li>
+					</ul>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
